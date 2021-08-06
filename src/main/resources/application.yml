@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+
+spring:
+  application:
+    name: indoor-pos
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://sh-cynosdbmysql-grp-20dsfnyq.sql.tencentcdb.com:25763/metting?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: "!QAZ2wsx"
+
+mybatis-plus:
+  global-config:
+    db-config:
+      db-type: mysql # 非必须配置, 否则启动报错
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+  mapper-locations: classpath*:mappers/*.xml
+  type-aliases-package: com.mt.indoorpos.infrastruture.entity
