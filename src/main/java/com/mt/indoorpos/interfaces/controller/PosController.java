@@ -8,10 +8,7 @@ import com.mt.indoorpos.service.PosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,12 +25,12 @@ public class PosController {
     private PosService posService;
 
     @PostMapping(path = "/get-location")
-    public Location getLocation(GetLocationDto dto){
+    public Location getLocation(@RequestBody GetLocationDto dto){
         return posService.getLocation(dto.getApList());
     }
 
     @PostMapping(path = "/isInner")
-    public Boolean isInner(IsInnerLocationDto dto){
+    public Boolean isInner(@RequestBody IsInnerLocationDto dto){
         return posService.isInner(dto.getApList(), dto.getRoomId());
     }
 
