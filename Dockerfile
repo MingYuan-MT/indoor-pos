@@ -11,4 +11,4 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # Run the web service on container startup.
-CMD ["java","-Djava.security.egd=file:/dev/./urandom","-Dserver.port=80","-jar","/app/target/helloworld-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-Djava.security.egd=file:/dev/./urandom","-Dserver.port=80","-jar","/com/mt/indoor-pos-0.0.1-SNAPSHOT.jar"]
