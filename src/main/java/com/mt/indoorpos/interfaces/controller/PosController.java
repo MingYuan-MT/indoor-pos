@@ -1,6 +1,8 @@
 package com.mt.indoorpos.interfaces.controller;
 
 import com.mt.indoorpos.infrastruture.entity.Location;
+import com.mt.indoorpos.interfaces.dto.GetLocationDto;
+import com.mt.indoorpos.interfaces.dto.IsInnerLocationDto;
 import com.mt.indoorpos.interfaces.vo.ApInfoVo;
 import com.mt.indoorpos.service.PosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +21,20 @@ import java.util.List;
  * @date: 2021-08-04
  * @vision: 1.0
  */
-@Controller
+@RestController
 @RequestMapping("/pos")
 public class PosController {
     @Autowired
     private PosService posService;
 
     @PostMapping(path = "/get-location")
-    public Location getLocation(@NonNull @RequestParam("apList") List<ApInfoVo> apList){
-        return posService.getLocation(apList);
+    public Location getLocation(GetLocationDto dto){
+        return posService.getLocation(dto.getApList());
     }
 
     @PostMapping(path = "/isInner")
-    public Boolean isInner(@NonNull @RequestParam("apList") List<ApInfoVo> apList, @RequestParam("roomId") Integer roomId){
-        return posService.isInner(apList, roomId);
+    public Boolean isInner(IsInnerLocationDto dto){
+        return posService.isInner(dto.getApList(), dto.getRoomId());
     }
 
 }
